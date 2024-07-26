@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>CarLoan: Coding Challenge by Hlois</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!--Dev Icons-->
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <!--Prism-->
+    <link rel="stylesheet" href="/css/prism.css">
+
+    <!-- Add Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&family=Racing+Sans+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- favicons CSS-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="manifest" href="/img/site.webmanifest">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+
+<body data-cf-theme="blue">
+
+    <header>
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="/img/2.png" width="40" class="d-line-block align-text-top">
+                    CarLoan
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/app.html">App</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/code.html">The Code</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">The Repo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container mt-5">
+            <div class="row g-3">
+                <div class="col-12 col-md-4 h-100">
+                    <div class="container p-3">
+                        <form class="h-100">
+                            <label class="form-label" for="loanAmount">Loan Amount</label>
+                            <input id="loanAmount" type="number" placeholder="Loan Amount" class="form-control"
+                                value="">
+
+                            <label class="form-label" for="termMonths">Term(Months)</label></td>
+                            <input id="termMonths" type="number" placeholder="Term" class="form-control" value="">
+
+                            <label class="form-label" for="interestRate">Interest Rate</label>
+                            <input id="interestRate" type="percentage" placeholder="Interest Rate" class="form-control"
+                                value="">
+
+                            <button id="btnCalculate" type="submit" class="btn btn-primary">Calculate</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8">
+                    <h3 class="text-center">Your Monthly Payments</h3>
+                    <h3 id="generateMonthlyPayment" class="text-center">0</h3>
+                    <table class="table">
+                        <tbody>
+                            <table class="table">
+                                <tr>
+                                    <td>Total Principal</td>
+                                    <td id="TotalPrincipal" class="text-end">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Interest</td>
+                                    <td id="TotalInterest" class="text-end">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Cost</td>
+                                    <td id="TotalCost" class="text-end">0</td>
+                                </tr>
+                            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class=col-12>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Payment</th>
+                            <th>Principal</th>
+                            <th>Interest</th>
+                            <th>Total Interest</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="DataBody">
+                        <!--Data Goes Here-->
+                    </tbody>
+                </table>
+            </div>
+            <!--Template-->
+            <template id="Data-template">
+                <tr>
+                    <td data-month></td>
+                    <td data-payment></td>
+                    <td data-principal></td>
+                    <td data-interest></td>
+                    <td data-TotalInterest></td>
+                    <td data-balance></td>
+                </tr>
+            </template>
+        </div>
+    </main>
+    <footer class="py-3">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-md-3 gy-2 align-items-center">
+                <div class="col order-last order-md-first text-center text-md-start">
+                    <span>&copy2024</span>
+                    <span>HLois Mlo | hlois.mlo@gmail.com</span>
+                </div>
+                <div class="col text-center gap-2 justify-content-center justify-content-md-end">
+                    <img src="/img/3.png" height="70" alt="Logo">
+                </div>
+                <div class="col hstack gap-3">
+                    <div><a href="#"><i class="bi bi-linkedin"></i></a></div>
+                    <div><a href="#"><i class="bi bi-github"></i></a></div>
+                    <div><a href="#"><i class="bi bi-envelope"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="/js/site.js"></script>
+
+    <script>
+        document.getElementById("btnCalculate").addEventListener("click", getValues);
+    </script>
+
+</body>
+
+</html>
